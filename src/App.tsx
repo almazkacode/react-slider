@@ -1,9 +1,14 @@
+import { Slider } from './components/Slider/Slider';
 import './styles/main.scss';
+import { EVENTS } from './data';
 
 function App() {
+  const event = EVENTS[0].events;
   return (
     <div className="wrapper">
-      <main className="main"></main>
+      <main className="main">
+        <Slider data={event} />
+      </main>
     </div>
   );
 }
