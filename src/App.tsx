@@ -1,5 +1,6 @@
 import { Slider } from './components/Slider/Slider';
-import './styles/main.scss';
+import 'normalize.css';
+import './App.scss';
 import { EVENTS } from './data';
 
 function App() {
