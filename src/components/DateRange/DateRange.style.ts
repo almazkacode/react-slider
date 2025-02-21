@@ -4,6 +4,7 @@ export const Range = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 80px;
   width: 100%;
   max-width: 973px;
   margin: 0 auto;

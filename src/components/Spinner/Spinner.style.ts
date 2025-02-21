@@ -4,7 +4,7 @@ export const Circle = styled.div`
   position: relative;
   width: 530px;
   height: 530px;
-  border: 1px solid var(--color-grey);
+  border: 1px solid var(--color-line);
   border-radius: 50%;
   transition: var(--transition);
 `;
