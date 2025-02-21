@@ -24,8 +24,8 @@ export const Slider: React.FC<SliderProps> = ({ data }) => {
       <SC.StyledSwiper
         ref={swiperRef}
         modules={[Navigation]}
-        spaceBetween={80}
-        slidesPerView={3}
+        spaceBetween={40}
+        slidesPerView={4}
         navigation
         pagination={{ clickable: true }}
         scrollbar={{ draggable: true }}
