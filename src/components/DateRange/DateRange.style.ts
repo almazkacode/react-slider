@@ -1,0 +1,21 @@
+import styled from '@emotion/styled';
+
+export const Range = styled.div`
+  position: absolute;
+  width: 100%;
+  max-width: 973px;
+  margin: 0 auto;
+  font-size: 200px;
+  font-weight: 700;
+  line-height: 160%;
+  letter-spacing: -2%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 10;
+`;
+
+export const Date = styled.span<{ variant: 'start' | 'end' }>`
+  color: ${({ variant }) =>
+    variant === 'start' ? 'var(--color-range-start)' : 'var(--color-range-end)'};
+`;

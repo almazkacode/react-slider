@@ -1,9 +1,9 @@
 import * as SC from './Slider.style';
 
-type SliderItemProps = {
+interface SliderItemProps {
   title: number;
   text: string;
-};
+}
 
 export const SliderItem: React.FC<SliderItemProps> = ({ title, text }) => {
   return (

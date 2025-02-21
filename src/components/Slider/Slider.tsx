@@ -1,11 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/navigation';
 import { useRef } from 'react';
 
 import * as SC from './Slider.style';
 import { SliderItem } from './Slidertem';
-import 'swiper/css';
-import 'swiper/css/navigation';
 
 interface Event {
   year: number;
