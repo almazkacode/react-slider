@@ -5,9 +5,11 @@ import { EVENTS } from './data';
 
 import { Spinner } from './components/Spinner/Spinner';
 import { Slider } from './components/Slider/Slider';
+import { DateRange } from './components/DateRange/DateRange';
 
 function App() {
   const [currentItem, setCurrentItem] = useState(0);
+  const years = EVENTS[currentItem].events.map((item) => item.year);
 
   return (
     <div className="wrapper">
@@ -17,6 +19,8 @@ function App() {
           currentIndex={currentItem}
           onItemClick={(index) => setCurrentItem(index)}
         />
+
+        <DateRange startDate={Math.min(...years)} endDate={Math.max(...years)} />
 
         <Slider data={EVENTS[currentItem].events} />
       </main>
