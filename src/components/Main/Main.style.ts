@@ -51,7 +51,7 @@ export const Lines = styled.div`
     max-width: 100%;
     height: 1px;
     background: var(--color-line);
-    top: calc(50% + 50px);
+    top: calc(50% + 40px);
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -84,7 +84,8 @@ export const CenterBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  padding-top: 50px;
+  overflow: hidden;
 `;
 
 export const SpinnerWrapper = styled.div`
@@ -96,7 +97,7 @@ export const SpinnerWrapper = styled.div`
 
 export const DateRangeWrapper = styled.div`
   position: absolute;
-  top: 50%;
+  top: calc(50% + 20px);
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;

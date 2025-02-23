@@ -6,10 +6,9 @@ export const Circle = styled.div`
   height: 530px;
   border: 1px solid var(--color-line);
   border-radius: 50%;
-  transition: var(--transition);
 `;
 
-export const ItemWrapper = styled.div<{ x: number; y: number }>`
+export const Theme = styled.div<{ x: number; y: number }>`
   position: absolute;
   width: 56px;
   height: 56px;
@@ -21,6 +20,13 @@ export const ItemWrapper = styled.div<{ x: number; y: number }>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  z-index: 100;
+`;
+
+export const ItemWrapper = styled.div`
+  width: 56px;
+  height: 56px;
+  border: none;
 
   &:hover > div {
     background-color: var(--color-background);
@@ -31,8 +37,8 @@ export const ItemWrapper = styled.div<{ x: number; y: number }>`
 export const Item = styled.div<{ isActive: boolean }>`
   width: 56px;
   height: 56px;
-  background-color: ${(props) =>
-    props.isActive ? 'var(--color-background)' : 'var(--color-grey)'};
+  background-color: ${({ isActive }) =>
+    isActive ? 'var(--color-background)' : 'var(--color-grey)'};
   border: 1px solid rgba(48, 62, 88, 0.5);
   border-radius: 50%;
   display: flex;
@@ -40,20 +46,30 @@ export const Item = styled.div<{ isActive: boolean }>`
   justify-content: center;
   font-size: 20px;
   line-height: 30px;
-  transform: scale(${(props) => (props.isActive ? 1 : 0.1)});
-  transition: var(--transition);
+  transform: scale(${({ isActive }) => (isActive ? 1 : 0.1)});
+  transition:
+    transform 0.4s linear,
+    background-color 0.4s linear;
   cursor: pointer;
 `;
 
-export const Number = styled.span`
+export const Number = styled.span<{ rotationAngle: number }>`
   color: var(--color-grey);
+  transform: rotate(${(props) => -props.rotationAngle}deg);
+  will-change: transform;
+  text-rendering: optimizeLegibility;
 `;
 
-export const Title = styled.span<{ isActive: boolean }>`
+export const Title = styled.h3<{ rotationAngle: number; isVisible: boolean }>`
   position: absolute;
-  left: 70px;
+  transform: rotate(${(props) => -props.rotationAngle}deg) translateX(85%);
   font-weight: 700;
-  opacity: ${(props) => (props.isActive ? 1 : 0)};
-  visibility: ${(props) => (props.isActive ? 'visible' : 'hidden')};
-  transition: var(--transition);
+  font-size: 20px;
+  line-height: 30px;
+  white-space: nowrap;
+  text-align: left;
+  width: 150px;
+  z-index: 100;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  transition: opacity 0.3s linear;
 `;
