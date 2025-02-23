@@ -31,7 +31,8 @@ export const Main: React.FC = () => {
               </SC.DateRangeWrapper>
               <Navigation
                 count={EVENTS.length}
-                currentIndex={currentItem + 1}
+                currentIndex={currentItem}
+                onNavigate={(index) => setCurrentItem(index)}
               />
             </SC.CenterBlock>
 

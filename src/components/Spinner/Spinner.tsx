@@ -17,9 +17,7 @@ export const Spinner: React.FC<SpinnerProps> = ({ items, currentIndex, onItemCli
   const [isRotating, setIsRotating] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const calculateRotationAngle = (index: number, itemsCount: number) => {
-    return -(index * (360 / itemsCount) + 60);
-  };
+  const calculateRotationAngle = (index: number) => -(index * (360 / ITEMS_COUNT) + 60);
 
   const calculateShortestRotation = (from: number, to: number) => {
     let delta = (to - from) % 360;
@@ -28,47 +26,57 @@ export const Spinner: React.FC<SpinnerProps> = ({ items, currentIndex, onItemCli
     return delta;
   };
 
-  useEffect(() => {
-    const initialAngle = calculateRotationAngle(currentIndex, ITEMS_COUNT);
-    setRotationAngle(initialAngle);
-    gsap.set(containerRef.current, { rotate: initialAngle });
-  }, [currentIndex, ITEMS_COUNT]);
+  const animateRotation = (index: number, onStart?: () => void) => {
+    const newAngle = calculateRotationAngle(index);
+    const delta = calculateShortestRotation(rotationAngle, newAngle);
 
-  const handleItemClick = (index: number) => {
-    if (index === activeIndex) return;
-
-    setActiveIndex(index);
     setIsRotating(true);
-
-    const currentRotation = rotationAngle;
-    const finalTargetRotation = calculateRotationAngle(index, ITEMS_COUNT);
-    const delta = calculateShortestRotation(currentRotation, finalTargetRotation);
+    setActiveIndex(index);
 
     gsap.to(containerRef.current, {
-      rotate: currentRotation + delta,
-      duration: 0.8,
-      ease: 'power2.out',
+      rotate: rotationAngle + delta,
+      duration: 0.7,
+      ease: 'power1.out',
       force3D: true,
+      onStart,
       onUpdate: () => {
-        const newAngle = gsap.getProperty(containerRef.current, 'rotate') as number;
-        setRotationAngle(newAngle);
+        setRotationAngle(gsap.getProperty(containerRef.current, 'rotate') as number);
       },
       onComplete: () => {
         setIsRotating(false);
-        onItemClick(index);
       },
     });
   };
 
-  const positions = useMemo(() => {
-    return items.map((_, index) => {
-      const angle = index * (360 / ITEMS_COUNT) * (Math.PI / 180);
-      return {
-        x: CIRCLE_RADIUS + CIRCLE_RADIUS * Math.cos(angle),
-        y: CIRCLE_RADIUS + CIRCLE_RADIUS * Math.sin(angle),
-      };
-    });
-  }, [ITEMS_COUNT, items]);
+  useEffect(() => {
+    const initialAngle = calculateRotationAngle(currentIndex);
+    setRotationAngle(initialAngle);
+    gsap.set(containerRef.current, { rotate: initialAngle });
+  }, []);
+
+  useEffect(() => {
+    if (activeIndex !== currentIndex) {
+      animateRotation(currentIndex);
+    }
+  }, [currentIndex]);
+
+  const handleItemClick = (index: number) => {
+    if (index !== activeIndex) {
+      animateRotation(index, () => onItemClick(index));
+    }
+  };
+
+  const positions = useMemo(
+    () =>
+      items.map((_, index) => {
+        const angle = index * (360 / ITEMS_COUNT) * (Math.PI / 180);
+        return {
+          x: CIRCLE_RADIUS + CIRCLE_RADIUS * Math.cos(angle),
+          y: CIRCLE_RADIUS + CIRCLE_RADIUS * Math.sin(angle),
+        };
+      }),
+    [items],
+  );
 
   return (
     <SC.Circle ref={containerRef}>

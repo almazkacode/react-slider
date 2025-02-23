@@ -54,14 +54,14 @@ export const Item = styled.div<{ isActive: boolean }>`
 
 export const Number = styled.span<{ rotationAngle: number }>`
   color: var(--color-grey);
-  transform: rotate(${(props) => -props.rotationAngle}deg);
+  transform: rotate(${({ rotationAngle }) => -rotationAngle}deg);
   will-change: transform;
   text-rendering: optimizeLegibility;
 `;
 
 export const Title = styled.h3<{ rotationAngle: number; isVisible: boolean }>`
   position: absolute;
-  transform: rotate(${(props) => -props.rotationAngle}deg) translateX(85%);
+  transform: rotate(${({ rotationAngle }) => -rotationAngle}deg) translateX(85%);
   font-weight: 700;
   font-size: 20px;
   line-height: 30px;
@@ -69,6 +69,6 @@ export const Title = styled.h3<{ rotationAngle: number; isVisible: boolean }>`
   text-align: left;
   width: 150px;
   z-index: 100;
-  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  opacity: ${({ isVisible }) => (isVisible ? 1 : 0)};
   transition: opacity 0.3s linear;
 `;
