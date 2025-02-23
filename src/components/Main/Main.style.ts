@@ -15,13 +15,10 @@ export const Container = styled.div`
 
 export const Section = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   max-width: 1440px;
-  padding-top: 170px;
-  padding-left: 77px;
-  padding-right: 77px;
+  height: 1080px;
+  padding: 170px 77px 260px 77px;
+  overflow: hidden;
 
   border-left: 1px solid var(--color-line);
   border-right: 1px solid var(--color-line);
@@ -30,7 +27,7 @@ export const Section = styled.div`
     content: '';
     position: absolute;
     width: 120px;
-    height: 5px;
+    height: 10px;
     background: linear-gradient(90deg, var(--color-accent), var(--color-range-end));
     top: 170px;
     left: 0;
@@ -51,7 +48,7 @@ export const Lines = styled.div`
     max-width: 100%;
     height: 1px;
     background: var(--color-line);
-    top: calc(50% + 40px);
+    top: calc(50% - 55px);
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -69,9 +66,16 @@ export const Lines = styled.div`
   }
 `;
 
+export const CenterBlock = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 615px;
+  margin-bottom: 57px;
+`;
+
 export const Title = styled.h1`
-  position: absolute;
-  left: 77px;
   max-width: 360px;
   font-size: 56px;
   font-weight: 700;
@@ -79,32 +83,24 @@ export const Title = styled.h1`
   color: var(--color-grey);
 `;
 
-export const CenterBlock = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  overflow: hidden;
-`;
-
 export const SpinnerWrapper = styled.div`
+  position: absolute;
+  top: 50px;
   display: flex;
   justify-content: center;
   width: 100%;
-  z-index: 1;
+  z-index: 100;
 `;
 
 export const DateRangeWrapper = styled.div`
   position: absolute;
-  top: calc(50% + 20px);
-  left: 50%;
+  top: calc(50%);
+  left: 49%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
 `;
 
 export const SliderWrapper = styled.div`
-  margin-top: auto;
   width: 100%;
 `;

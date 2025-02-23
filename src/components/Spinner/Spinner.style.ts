@@ -20,7 +20,6 @@ export const Theme = styled.div<{ x: number; y: number }>`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 100;
 `;
 
 export const ItemWrapper = styled.div`

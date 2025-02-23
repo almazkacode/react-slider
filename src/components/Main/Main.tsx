@@ -5,6 +5,7 @@ import { EVENTS } from '../../data';
 import { Spinner } from '../Spinner/Spinner';
 import { Slider } from '../Slider/Slider';
 import { DateRange } from '../DateRange/DateRange';
+import { Navigation } from '../Navigation/Navigation';
 
 export const Main: React.FC = () => {
   const [currentItem, setCurrentItem] = useState(0);
@@ -15,8 +16,9 @@ export const Main: React.FC = () => {
       <SC.Container>
         <SC.Section>
           <SC.Lines>
-            <SC.Title>Исторические даты</SC.Title>
             <SC.CenterBlock>
+              <SC.Title>Исторические даты</SC.Title>
+
               <SC.SpinnerWrapper>
                 <Spinner
                   items={EVENTS.map((event) => event.title)}
@@ -27,7 +29,12 @@ export const Main: React.FC = () => {
               <SC.DateRangeWrapper>
                 <DateRange startDate={Math.min(...years)} endDate={Math.max(...years)} />
               </SC.DateRangeWrapper>
+              <Navigation
+                count={EVENTS.length}
+                currentIndex={currentItem + 1}
+              />
             </SC.CenterBlock>
+
             <SC.SliderWrapper>
               <Slider data={EVENTS[currentItem].events} />
             </SC.SliderWrapper>
