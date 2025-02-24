@@ -5,6 +5,10 @@ export const Navigation = styled.div`
   flex-direction: column;
   justify-content: space-between;
   gap: 15px;
+
+  @media (max-width: 480px) {
+    gap: 5px;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -12,6 +16,12 @@ export const ButtonWrapper = styled.div`
   justify-content: space-between;
   gap: 20px;
   width: 120px;
+
+  @media (max-width: 480px) {
+    justify-content: start;
+    width: 70px;
+    gap: 5px;
+  }
 `;
 
 export const Text = styled.p`

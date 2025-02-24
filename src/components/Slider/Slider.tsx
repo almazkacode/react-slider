@@ -16,9 +16,10 @@ interface Event {
 
 interface SliderProps {
   data: Event[];
+  title: string;
 }
 
-export const Slider: React.FC<SliderProps> = ({ data }) => {
+export const Slider: React.FC<SliderProps> = ({ data, title }) => {
   const [localData, setLocalData] = useState<Event[]>(data);
   const sliderRef = useRef(null);
   const prevButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -48,11 +49,13 @@ export const Slider: React.FC<SliderProps> = ({ data }) => {
 
   return (
     <SC.SliderContainer ref={sliderRef}>
+      <SC.Title>{title}</SC.Title>
       <SC.ButtonPrev ref={prevButtonRef} />
       <SC.StyledSwiper
         modules={[Navigation]}
         spaceBetween={80}
         slidesPerView={3}
+        autoHeight
         navigation={{
           prevEl: prevButtonRef.current,
           nextEl: nextButtonRef.current,
@@ -67,6 +70,11 @@ export const Slider: React.FC<SliderProps> = ({ data }) => {
           navigationParams.nextEl = nextButtonRef.current ?? undefined;
         }}
         scrollbar={{ draggable: true }}
+        breakpoints={{
+          320: { slidesPerView: 1.5, spaceBetween: 20 },
+          480: { slidesPerView: 2, spaceBetween: 80 },
+          1024: { slidesPerView: 3, spaceBetween: 80 },
+        }}
       >
         {localData.map((item) => (
           <SwiperSlide key={item.text}>

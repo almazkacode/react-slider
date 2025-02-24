@@ -5,24 +5,38 @@ export const SliderContainer = styled.div`
   position: relative;
   width: 100%;
   padding: 0 80px;
+
+  @media (max-width: 1024px) {
+    padding: 0;
+  }
 `;
 
-export const Title = styled.h3`
+export const Year = styled.h3`
   margin-bottom: 15px;
   font-family: 'Bebas Neue', Arial, sans-serif;
   font-size: 25px;
   line-height: 120%;
   color: var(--color-accent);
+
+  @media (max-width: 480px) {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
 `;
 
 export const Description = styled.p`
-  height: 90px;
+  min-height: 135px;
   color: var(--color-text);
+
+  @media (max-width: 480px) {
+    font-size: 14px;
+    line-height: 145%;
+  }
 `;
 
 const Button = styled.button`
   position: absolute;
-  top: 50%;
+  top: calc(50% - 30px);
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
@@ -53,27 +67,64 @@ const Button = styled.button`
 
 export const ButtonNext = styled(Button)`
   right: 20px;
+
   &::after {
     transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
 export const ButtonPrev = styled(Button)`
   left: 20px;
+
   &::after {
     transform: translate(-50%, -50%) rotate(135deg);
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
   }
 `;
 
 export const StyledSwiperSlide = styled(SwiperSlide)`
   width: 100%;
   max-width: 400px;
+  min-height: 220px;
+
+  @media (max-width: 480px) {
+    max-width: 170px;
+  }
 `;
 
 export const StyledSwiper = styled(Swiper)`
+  height: auto;
+
   .swiper-wrapper {
     max-width: 1440px;
+
     margin: 0 auto;
     cursor: pointer;
+  }
+`;
+
+export const Title = styled.p`
+  display: none;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 120%;
+  color: var(--color-grey);
+
+  @media (max-width: 1024px) {
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-line);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 14px;
   }
 `;

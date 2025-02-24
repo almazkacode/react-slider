@@ -8,7 +8,7 @@ interface SliderItemProps {
 export const SliderItem: React.FC<SliderItemProps> = ({ title, text }) => {
   return (
     <>
-      <SC.Title>{title}</SC.Title>
+      <SC.Year>{title}</SC.Year>
       <SC.Description>{text}</SC.Description>
     </>
   );

@@ -13,6 +13,11 @@ export const Button = styled.button<{ direction: 'prev' | 'next' }>`
   cursor: pointer;
   position: relative;
 
+  @media (max-width: 480px) {
+    width: 25px;
+    height: 25px;
+  }
+
   &:hover {
     background-color: var(--color-light);
   }

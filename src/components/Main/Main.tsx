@@ -14,33 +14,30 @@ export const Main: React.FC = () => {
   return (
     <SC.Main>
       <SC.Container>
-        <SC.Section>
-          <SC.Lines>
-            <SC.CenterBlock>
-              <SC.Title>Исторические даты</SC.Title>
+        <SC.CenterBlock>
+          <SC.Title>Исторические даты</SC.Title>
 
-              <SC.SpinnerWrapper>
-                <Spinner
-                  items={EVENTS.map((event) => event.title)}
-                  currentIndex={currentItem}
-                  onItemClick={(index) => setCurrentItem(index)}
-                />
-              </SC.SpinnerWrapper>
-              <SC.DateRangeWrapper>
-                <DateRange startDate={Math.min(...years)} endDate={Math.max(...years)} />
-              </SC.DateRangeWrapper>
-              <Navigation
-                count={EVENTS.length}
-                currentIndex={currentItem}
-                onNavigate={(index) => setCurrentItem(index)}
-              />
-            </SC.CenterBlock>
-
-            <SC.SliderWrapper>
-              <Slider data={EVENTS[currentItem].events} />
-            </SC.SliderWrapper>
-          </SC.Lines>
-        </SC.Section>
+          <SC.SpinnerWrapper>
+            <Spinner
+              items={EVENTS.map((event) => event.title)}
+              currentIndex={currentItem}
+              onItemClick={(index) => setCurrentItem(index)}
+            />
+          </SC.SpinnerWrapper>
+          <SC.DateRangeWrapper>
+            <DateRange startDate={Math.min(...years)} endDate={Math.max(...years)} />
+          </SC.DateRangeWrapper>
+          <SC.NavigationWrapper>
+            <Navigation
+              count={EVENTS.length}
+              currentIndex={currentItem}
+              onNavigate={(index) => setCurrentItem(index)}
+            />
+          </SC.NavigationWrapper>
+          <SC.SliderWrapper>
+            <Slider data={EVENTS[currentItem].events} title={EVENTS[currentItem].title} />
+          </SC.SliderWrapper>
+        </SC.CenterBlock>
       </SC.Container>
     </SC.Main>
   );
