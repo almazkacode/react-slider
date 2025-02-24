@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Main = styled.main`
   width: 100%;
-  height: 100vh;
   background-color: var(--color-background);
 `;
 
@@ -17,7 +16,7 @@ export const Section = styled.div`
   position: relative;
   max-width: 1440px;
   height: 1080px;
-  padding: 170px 77px 260px 77px;
+  padding: 170px 0 260px 0;
   overflow: hidden;
 
   border-left: 1px solid var(--color-line);
@@ -73,6 +72,7 @@ export const CenterBlock = styled.div`
   justify-content: space-between;
   height: 615px;
   margin-bottom: 57px;
+  padding: 0 80px;
 `;
 
 export const Title = styled.h1`
@@ -86,10 +86,16 @@ export const Title = styled.h1`
 export const SpinnerWrapper = styled.div`
   position: absolute;
   top: 50px;
+  right: 0;
+  left: 0;
   display: flex;
   justify-content: center;
   width: 100%;
   z-index: 100;
+
+  @media (max-width: 576px) {
+    display: none;
+  }
 `;
 
 export const DateRangeWrapper = styled.div`
@@ -103,4 +109,5 @@ export const DateRangeWrapper = styled.div`
 
 export const SliderWrapper = styled.div`
   width: 100%;
+  margin-bottom: 100px;
 `;

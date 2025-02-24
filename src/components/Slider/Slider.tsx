@@ -1,4 +1,5 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -18,16 +19,29 @@ interface SliderProps {
 
 export const Slider: React.FC<SliderProps> = ({ data }) => {
   const swiperRef = useRef(null);
+  const prevButtonRef = useRef<HTMLButtonElement | null>(null);
+  const nextButtonRef = useRef<HTMLButtonElement | null>(null);
 
   return (
-    <SC.SliderContainer>
+    <SC.SliderContainer ref={swiperRef}>
+      <SC.ButtonPrev ref={prevButtonRef} />
       <SC.StyledSwiper
-        ref={swiperRef}
         modules={[Navigation]}
-        spaceBetween={40}
-        slidesPerView={4}
-        navigation
-        pagination={{ clickable: true }}
+        spaceBetween={80}
+        slidesPerView={3}
+        navigation={{
+          prevEl: prevButtonRef.current,
+          nextEl: nextButtonRef.current,
+        }}
+        onBeforeInit={(swiper: SwiperType) => {
+          const navigationParams = swiper.params.navigation as {
+            prevEl?: HTMLElement;
+            nextEl?: HTMLElement;
+          };
+
+          navigationParams.prevEl = prevButtonRef.current ?? undefined;
+          navigationParams.nextEl = nextButtonRef.current ?? undefined;
+        }}
         scrollbar={{ draggable: true }}
       >
         {data.map((item) => (
@@ -36,6 +50,7 @@ export const Slider: React.FC<SliderProps> = ({ data }) => {
           </SwiperSlide>
         ))}
       </SC.StyledSwiper>
+      <SC.ButtonNext ref={nextButtonRef} />
     </SC.SliderContainer>
   );
 };

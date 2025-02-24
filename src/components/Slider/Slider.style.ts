@@ -2,7 +2,9 @@ import styled from '@emotion/styled';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 export const SliderContainer = styled.div`
+  position: relative;
   width: 100%;
+  padding: 0 80px;
 `;
 
 export const Title = styled.h3`
@@ -18,52 +20,59 @@ export const Description = styled.p`
   color: var(--color-text);
 `;
 
+const Button = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 0 15px 0 rgba(56, 119, 238, 0.1);
+  background: var(--color-light);
+  cursor: pointer;
+  z-index: 10;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid var(--color-accent);
+    border-top: 0;
+    border-left: 0;
+    width: 7px;
+    height: 7px;
+  }
+
+  &:disabled {
+    display: none;
+  }
+`;
+
+export const ButtonNext = styled(Button)`
+  right: 20px;
+  &::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+`;
+
+export const ButtonPrev = styled(Button)`
+  left: 20px;
+  &::after {
+    transform: translate(-50%, -50%) rotate(135deg);
+  }
+`;
+
 export const StyledSwiperSlide = styled(SwiperSlide)`
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
 `;
 
 export const StyledSwiper = styled(Swiper)`
   .swiper-wrapper {
-    position: relative;
-    display: flex;
     max-width: 1440px;
     margin: 0 auto;
-    padding-right: 80px;
-    padding-left: 80px;
-  }
-
-  .swiper-button-next,
-  .swiper-button-prev {
-    position: absolute;
-    width: 40px;
-    height: 40px;
-    border: none;
-    border-radius: 50%;
-    box-shadow: 0 0 15px 0 rgba(56, 119, 238, 0.1);
-    background: var(--color-light);
-    cursor: pointer;
-    z-index: 10;
-
-    &::after {
-      content: '';
-      position: absolute;
-      border: 2px solid var(--color-accent);
-      border-top: 0;
-      border-left: 0;
-      width: 7px;
-      height: 7px;
-    }
-  }
-
-  .swiper-button-next::after {
-    transform: rotate(-45deg);
-  }
-
-  .swiper-button-prev::after {
-    transform: rotate(135deg);
-  }
-
-  .swiper-button-disabled {
-    display: none;
   }
 `;
