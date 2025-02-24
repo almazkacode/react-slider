@@ -35,7 +35,7 @@ export const Spinner: React.FC<SpinnerProps> = ({ items, currentIndex, onItemCli
 
     gsap.to(containerRef.current, {
       rotate: rotationAngle + delta,
-      duration: 0.8,
+      duration: 1,
       ease: 'power1.out',
       force3D: true,
       onStart,

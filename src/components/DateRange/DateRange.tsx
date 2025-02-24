@@ -15,7 +15,7 @@ export const DateRange: React.FC<DateRangeProps> = ({ startDate, endDate }) => {
     const startObj = { value: animatedStart };
     gsap.to(startObj, {
       value: startDate,
-      duration: 0.8,
+      duration: 1,
       ease: 'power1.out',
       onUpdate: () => setAnimatedStart(Math.round(startObj.value)),
     });

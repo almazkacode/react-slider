@@ -74,5 +74,6 @@ export const StyledSwiper = styled(Swiper)`
   .swiper-wrapper {
     max-width: 1440px;
     margin: 0 auto;
+    cursor: pointer;
   }
 `;

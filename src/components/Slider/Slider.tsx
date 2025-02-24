@@ -3,7 +3,8 @@ import { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { useRef } from 'react';
+import gsap from 'gsap';
+import { useRef, useEffect, useState } from 'react';
 
 import * as SC from './Slider.style';
 import { SliderItem } from './Slidertem';
@@ -18,12 +19,35 @@ interface SliderProps {
 }
 
 export const Slider: React.FC<SliderProps> = ({ data }) => {
-  const swiperRef = useRef(null);
+  const [localData, setLocalData] = useState<Event[]>(data);
+  const sliderRef = useRef(null);
   const prevButtonRef = useRef<HTMLButtonElement | null>(null);
   const nextButtonRef = useRef<HTMLButtonElement | null>(null);
 
+  useEffect(() => {
+    if (sliderRef.current) {
+      gsap.to(sliderRef.current, {
+        opacity: 0,
+        duration: 0.5,
+        ease: 'power1.out',
+        onComplete: () => {
+          setLocalData(data);
+        },
+      });
+    }
+  }, [data]);
+
+  useEffect(() => {
+    if (sliderRef.current) {
+      gsap.to(sliderRef.current, {
+        duration: 0.5,
+        opacity: 1,
+      });
+    }
+  }, [localData]);
+
   return (
-    <SC.SliderContainer ref={swiperRef}>
+    <SC.SliderContainer ref={sliderRef}>
       <SC.ButtonPrev ref={prevButtonRef} />
       <SC.StyledSwiper
         modules={[Navigation]}
@@ -44,7 +68,7 @@ export const Slider: React.FC<SliderProps> = ({ data }) => {
         }}
         scrollbar={{ draggable: true }}
       >
-        {data.map((item) => (
+        {localData.map((item) => (
           <SwiperSlide key={item.text}>
             <SliderItem title={item.year} text={item.text} />
           </SwiperSlide>
