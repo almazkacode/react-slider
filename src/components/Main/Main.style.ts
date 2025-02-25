@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Pagination } from '../Pagination/Pagination';
 
 export const Main = styled.main`
   width: 100%;
@@ -160,6 +161,7 @@ export const NavigationWrapper = styled.div`
   margin-bottom: 55px;
 
   @media (max-width: 1024px) {
+    position: relative;
     padding: 0;
     order: 1;
     margin-bottom: 0;
@@ -171,5 +173,18 @@ export const SliderWrapper = styled.div`
 
   @media (max-width: 576px) {
     margin-bottom: 20px;
+  }
+`;
+
+export const StyledPagination = styled(Pagination)`
+  display: none;
+
+  @media (max-width: 1024px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    margin-top: 5px;
   }
 `;

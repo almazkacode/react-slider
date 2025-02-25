@@ -33,6 +33,11 @@ export const Main: React.FC = () => {
               currentIndex={currentItem}
               onNavigate={(index) => setCurrentItem(index)}
             />
+            <SC.StyledPagination
+              count={EVENTS.length}
+              currentIndex={currentItem}
+              onNavigate={(index) => setCurrentItem(index)}
+            />
           </SC.NavigationWrapper>
           <SC.SliderWrapper>
             <Slider data={EVENTS[currentItem].events} title={EVENTS[currentItem].title} />
