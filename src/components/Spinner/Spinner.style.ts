@@ -27,9 +27,11 @@ export const ItemWrapper = styled.div`
   height: 56px;
   border: none;
 
-  &:hover > div {
-    background-color: var(--color-background);
-    transform: scale(1);
+  @media (hover: hover) {
+    &:hover > div {
+      background-color: var(--color-background);
+      transform: scale(1);
+    }
   }
 `;
 

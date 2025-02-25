@@ -48,8 +48,10 @@ const Button = styled.button`
     height: 25px;
   }
 
-  &:hover {
-    background-color: var(--color-light);
+  @media (hover: hover) {
+    &:hover {
+      background-color: var(--color-light);
+    }
   }
 
   &::before {
