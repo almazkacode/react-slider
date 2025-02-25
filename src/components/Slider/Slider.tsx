@@ -1,12 +1,12 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRef, useEffect, useState } from 'react';
+import * as SC from './Slider.style';
+import { SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import gsap from 'gsap';
-import { useRef, useEffect, useState } from 'react';
 
-import * as SC from './Slider.style';
 import { SliderItem } from './Slidertem';
 
 interface Event {

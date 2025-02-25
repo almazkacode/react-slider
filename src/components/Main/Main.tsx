@@ -1,7 +1,7 @@
-import * as SC from './Main.style';
 import { useState } from 'react';
-import { EVENTS } from '../../data';
+import * as SC from './Main.style';
 
+import { EVENTS } from '../../data';
 import { Spinner } from '../Spinner/Spinner';
 import { Navigation } from '../Navigation/Navigation';
 

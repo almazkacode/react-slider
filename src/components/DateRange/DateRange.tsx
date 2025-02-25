@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import gsap from 'gsap';
 import * as SC from './DateRange.style';
+import gsap from 'gsap';
 
 interface DateRangeProps {
   startDate: number;
