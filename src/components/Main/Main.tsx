@@ -3,8 +3,6 @@ import { useState } from 'react';
 import { EVENTS } from '../../data';
 
 import { Spinner } from '../Spinner/Spinner';
-import { Slider } from '../Slider/Slider';
-import { DateRange } from '../DateRange/DateRange';
 import { Navigation } from '../Navigation/Navigation';
 
 export const Main: React.FC = () => {
@@ -24,9 +22,9 @@ export const Main: React.FC = () => {
               onItemClick={(index) => setCurrentItem(index)}
             />
           </SC.SpinnerWrapper>
-          <SC.DateRangeWrapper>
-            <DateRange startDate={Math.min(...years)} endDate={Math.max(...years)} />
-          </SC.DateRangeWrapper>
+
+          <SC.StyledDateRange startDate={Math.min(...years)} endDate={Math.max(...years)} />
+
           <SC.NavigationWrapper>
             <Navigation
               count={EVENTS.length}
@@ -39,9 +37,8 @@ export const Main: React.FC = () => {
               onNavigate={(index) => setCurrentItem(index)}
             />
           </SC.NavigationWrapper>
-          <SC.SliderWrapper>
-            <Slider data={EVENTS[currentItem].events} title={EVENTS[currentItem].title} />
-          </SC.SliderWrapper>
+
+          <SC.StyledSlider data={EVENTS[currentItem].events} title={EVENTS[currentItem].title} />
         </SC.CenterBlock>
       </SC.Container>
     </SC.Main>

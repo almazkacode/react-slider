@@ -5,9 +5,10 @@ import * as SC from './DateRange.style';
 interface DateRangeProps {
   startDate: number;
   endDate: number;
+  className?: string;
 }
 
-export const DateRange: React.FC<DateRangeProps> = ({ startDate, endDate }) => {
+export const DateRange: React.FC<DateRangeProps> = ({ startDate, endDate, className }) => {
   const [animatedStart, setAnimatedStart] = useState(startDate);
   const [animatedEnd, setAnimatedEnd] = useState(endDate);
 
@@ -30,7 +31,7 @@ export const DateRange: React.FC<DateRangeProps> = ({ startDate, endDate }) => {
   }, [startDate, endDate]);
 
   return (
-    <SC.Range>
+    <SC.Range className={className}>
       <SC.Date variant="start">{animatedStart}</SC.Date>
       <SC.Date variant="end">{animatedEnd}</SC.Date>
     </SC.Range>

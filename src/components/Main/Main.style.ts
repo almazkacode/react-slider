@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 import { Pagination } from '../Pagination/Pagination';
+import { DateRange } from '../DateRange/DateRange';
+import { Slider } from '../Slider/Slider';
 
 export const Main = styled.main`
   width: 100%;
@@ -135,26 +137,6 @@ export const SpinnerWrapper = styled.div`
   }
 `;
 
-export const DateRangeWrapper = styled.div`
-  position: absolute;
-  top: calc(50% - 60px);
-  left: 49%;
-  transform: translate(-50%, -50%);
-  display: flex;
-  justify-content: center;
-
-  @media (max-width: 1024px) {
-    position: static;
-    left: 0;
-    transform: translate(0);
-    margin-bottom: 35px;
-  }
-
-  @media (max-width: 480px) {
-    margin-bottom: 10px;
-  }
-`;
-
 export const NavigationWrapper = styled.div`
   padding: 0 80px;
   padding-top: 387px;
@@ -168,13 +150,6 @@ export const NavigationWrapper = styled.div`
   }
 `;
 
-export const SliderWrapper = styled.div`
-  width: 100%;
-
-  @media (max-width: 576px) {
-    margin-bottom: 20px;
-  }
-`;
 
 export const StyledPagination = styled(Pagination)`
   display: none;
@@ -186,5 +161,31 @@ export const StyledPagination = styled(Pagination)`
     transform: translate(-50%, -50%);
     display: flex;
     margin-top: 5px;
+  }
+`;
+
+export const StyledDateRange = styled(DateRange)`
+  position: absolute;
+  top: calc(50% - 60px);
+  left: 49%;
+  transform: translate(-50%, -50%);
+
+  @media (max-width: 1024px) {
+    position: static;
+    left: 0;
+    transform: translate(0);
+    margin-bottom: 35px;
+  }
+
+  @media (max-width: 480px) {
+    margin-bottom: 10px;
+  }
+`;
+
+export const StyledSlider = styled(Slider)`
+  width: 100%;
+
+  @media (max-width: 576px) {
+    margin-bottom: 20px;
   }
 `;

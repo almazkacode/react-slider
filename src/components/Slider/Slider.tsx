@@ -17,9 +17,10 @@ interface Event {
 interface SliderProps {
   data: Event[];
   title: string;
+  className?: string;
 }
 
-export const Slider: React.FC<SliderProps> = ({ data, title }) => {
+export const Slider: React.FC<SliderProps> = ({ data, title, className }) => {
   const [localData, setLocalData] = useState<Event[]>(data);
   const sliderRef = useRef(null);
   const prevButtonRef = useRef<HTMLButtonElement | null>(null);
@@ -48,7 +49,7 @@ export const Slider: React.FC<SliderProps> = ({ data, title }) => {
   }, [localData]);
 
   return (
-    <SC.SliderContainer ref={sliderRef}>
+    <SC.SliderContainer ref={sliderRef} className={className}>
       <SC.Title>{title}</SC.Title>
       <SC.ButtonPrev ref={prevButtonRef} />
       <SC.StyledSwiper
