@@ -1,4 +1,3 @@
-import { Button } from './Button/Button.style';
 import * as SC from './Navigation.style';
 
 interface NavigationProps {
@@ -16,13 +15,8 @@ export const Navigation: React.FC<NavigationProps> = ({ count, currentIndex, onN
         {formatNumber(currentIndex + 1)}/{formatNumber(count)}
       </SC.Text>
       <SC.ButtonWrapper>
-        <Button
-          direction="prev"
-          disabled={currentIndex === 0}
-          onClick={() => onNavigate(currentIndex - 1)}
-        />
-        <Button
-          direction="next"
+        <SC.ButtonPrev disabled={currentIndex === 0} onClick={() => onNavigate(currentIndex - 1)} />
+        <SC.ButtonNext
           disabled={currentIndex === count - 1}
           onClick={() => onNavigate(currentIndex + 1)}
         />
