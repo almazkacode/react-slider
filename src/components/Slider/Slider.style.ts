@@ -9,6 +9,14 @@ export const SliderContainer = styled.div`
   @media (max-width: 1024px) {
     padding: 0;
   }
+
+  @media (max-width: 576px) {
+    height: 310px;
+  }
+
+  @media (max-width: 480px) {
+    height: 220px;
+  }
 `;
 
 export const Year = styled.h3`
@@ -36,7 +44,7 @@ export const Description = styled.p`
 
 const Button = styled.button`
   position: absolute;
-  top: calc(50% - 30px);
+  top: calc(50% - 50px);
   transform: translateY(-50%);
   width: 40px;
   height: 40px;
@@ -100,11 +108,12 @@ export const StyledSwiperSlide = styled(SwiperSlide)`
 `;
 
 export const StyledSwiper = styled(Swiper)`
-  height: auto;
+  min-height: 220px;
 
   .swiper-wrapper {
     max-width: 1440px;
-
+    display: flex;
+    align-items: stretch;
     margin: 0 auto;
     cursor: pointer;
   }

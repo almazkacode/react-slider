@@ -28,10 +28,9 @@ export const CenterBlock = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 60px;
   max-width: 1440px;
   padding-top: 170px;
-  padding-bottom: 60px;
+  padding-bottom: 20px;
   overflow: hidden;
 
   border-left: 1px solid var(--color-line);
@@ -138,18 +137,21 @@ export const SpinnerWrapper = styled.div`
 `;
 
 export const NavigationWrapper = styled.div`
+  display: inline-block;
+  width: 200px;
   padding: 0 80px;
   padding-top: 387px;
   margin-bottom: 55px;
+  z-index: 100;
 
   @media (max-width: 1024px) {
     position: relative;
     padding: 0;
     order: 1;
     margin-bottom: 0;
+    width: 100%;
   }
 `;
-
 
 export const StyledPagination = styled(Pagination)`
   display: none;

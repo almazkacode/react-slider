@@ -53,10 +53,10 @@ export const Slider: React.FC<SliderProps> = ({ data, title, className }) => {
       <SC.Title>{title}</SC.Title>
       <SC.ButtonPrev ref={prevButtonRef} />
       <SC.StyledSwiper
+        key={JSON.stringify(localData)}
         modules={[Navigation]}
         spaceBetween={80}
         slidesPerView={3}
-        autoHeight
         navigation={{
           prevEl: prevButtonRef.current,
           nextEl: nextButtonRef.current,
@@ -73,7 +73,8 @@ export const Slider: React.FC<SliderProps> = ({ data, title, className }) => {
         scrollbar={{ draggable: true }}
         breakpoints={{
           320: { slidesPerView: 1.5, spaceBetween: 20 },
-          480: { slidesPerView: 2, spaceBetween: 80 },
+          480: { slidesPerView: 1.5, spaceBetween: 80 },
+          768: { slidesPerView: 2, spaceBetween: 80 },
           1024: { slidesPerView: 3, spaceBetween: 80 },
         }}
       >
