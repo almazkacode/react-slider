@@ -29,7 +29,7 @@ export const CenterBlock = styled.div`
   flex-direction: column;
   justify-content: space-between;
   max-width: 1440px;
-  padding-top: 170px;
+  padding-top: 40px;
   padding-bottom: 20px;
   overflow: hidden;
 
@@ -70,7 +70,7 @@ export const CenterBlock = styled.div`
   }
 
   @media (max-width: 1024px) {
-    padding: 80px 50px 15px;
+    padding: 50px 50px 15px;
     margin-bottom: 0;
   }
 
