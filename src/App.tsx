@@ -2,8 +2,6 @@ import 'normalize.css';
 import './App.scss';
 import { Main } from './components/Main/Main';
 
-function App() {
+export const App = () => {
   return <Main />;
-}
-
-export default App;
+};
