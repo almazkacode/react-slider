@@ -38,3 +38,9 @@ npm install
 ```
 npm start
 ```
+
+5. Откройте страницу в браузере.
+
+```
+http://localhost:3000
+```
