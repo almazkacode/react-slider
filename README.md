@@ -1,5 +1,4 @@
-## Превью
-https://github.com/user-attachments/assets/b0759260-cbd3-4551-adb5-b0ef108b4e6e
+https://github.com/user-attachments/assets/4713d361-7d47-4a38-ab4e-5ec4f1740f9a
 
 ## Ссылка на приложение
 
